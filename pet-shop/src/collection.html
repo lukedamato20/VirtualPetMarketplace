@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Virtual Pet Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
+    <div class="container py-2">
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse " id="navbarNav">
+          <a class="navbar-brand" href="/">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/shop.html">Shop</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Test User
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/account.html">Account</a></li>
+                <li><a class="dropdown-item" href="/collection.html">Collection</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/logout">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <br>
+
+  
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#collection">Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#breeding">Breeding</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#result">Result</a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="tab-content mt-2">
+        <div class="tab-pane active" id="collection">
+          <div class="row justify-content-center">
+            <div id="petsCollectionRow" class="row row-cols-1 row-cols-md-4">
+              <!-- PETS LOAD HERE -->
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="breeding">
+          <div class="row justify-content-center">
+            <div id="petsBreedingRow" class="row row-cols-1 row-cols-md-4 g-2">
+              <!-- PETS LOAD HERE -->
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 button-to-breed">
+            <button class="btn btn-primary btn-breed" id="btn-breed">Start Breeding</button>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="result">
+          <div class="row justify-content-center">
+            <div id="petsChildRow" class="row row-cols-1 row-cols-md-4 g-1">
+              <!-- PETS LOAD HERE -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+  </div>
+
+  <div class="col-lg-8">
+    <div id="petCollectionTemplate" style="display: none;">
+      <div class="row mx-auto">
+        <div class="col">
+
+          <!-- new card -->
+          <div class="card h-200 panel-pet-collection shadow " style="width: 18rem;">
+            <h4 class="card-header panel-title">Pet 1</h4>
+
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src=""
+              data-holder-rendered="true">
+
+
+            <div class="card-body">
+              <strong>Pet ID</strong>: <span class="card-text id"></span><br />
+              <strong>Age</strong>: <span class="card-text age"></span><br />
+              <strong>Fertility Counter</strong>: <span class="card-text fertility_counter"></span><br />
+              <hr />
+              <strong>Max Food Level</strong>: <span class="card-text maxfood_level"></span><br />
+              <strong>Max Happiness Level</strong>: <span class="card-text maxhappiness_level"></span><br />
+              <strong>Max Energy Level</strong>: <span class="card-text maxenergy_level"></span><br />
+              <strong>Hunger Level</strong>: <span class="card-text hunger_level"></span><br />
+              <strong>Sadness Level</strong>: <span class="card-text sadness_level"></span><br />
+              <strong>Laziness Level</strong>: <span class="card-text laziness_level"></span><br />
+              <strong>Ranking</strong>: <span class="card-text fitness_ranking"></span><br /><br />
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-selectParent" data-id="0">Breed</button>
+              </div>
+
+              <br>
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-playWithPet" data-id="0" >Play!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="petBreedingTemplate" style="display: none;">
+      <div class="row mx-auto">
+        <div class="col">
+
+          <!-- new card -->
+          <div class="card h-200 panel-pet-collection shadow " style="width: 18rem;">
+            <h4 class="card-header panel-title">Pet 1</h4>
+
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src=""
+              data-holder-rendered="true">
+
+
+            <div class="card-body">
+              <strong>Pet ID</strong>: <span class="card-text id"></span><br />
+              <strong>Age</strong>: <span class="card-text age"></span><br />
+              <strong>Fertility Counter</strong>: <span class="card-text fertility_counter"></span><br />
+              <hr />
+              <strong>Max Food Level</strong>: <span class="card-text maxfood_level"></span><br />
+              <strong>Max Happiness Level</strong>: <span class="card-text maxhappiness_level"></span><br />
+              <strong>Max Energy Level</strong>: <span class="card-text maxenergy_level"></span><br />
+              <strong>Hunger Level</strong>: <span class="card-text hunger_level"></span><br />
+              <strong>Sadness Level</strong>: <span class="card-text sadness_level"></span><br />
+              <strong>Laziness Level</strong>: <span class="card-text laziness_level"></span><br />
+              <strong>Ranking</strong>: <span class="card-text fitness_ranking"></span><br /><br />
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="petChildTemplate" style="display: none;">
+      <div class="row mx-auto">
+        <div class="col">
+  
+          <!-- new card -->
+          <div class="card h-200 panel-pet-collection shadow " style="width: 18rem;">
+            <h4 class="card-header panel-title">Pet 1</h4>
+  
+            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src=""
+              data-holder-rendered="true">
+  
+  
+            <div class="card-body">
+              <strong>Pet ID</strong>: <span class="card-text id"></span><br />
+              <strong>Age</strong>: <span class="card-text age"></span><br />
+              <strong>Fertility Counter</strong>: <span class="card-text fertility_counter"></span><br />
+              <hr />
+              <strong>Max Food Level</strong>: <span class="card-text maxfood_level"></span><br />
+              <strong>Max Happiness Level</strong>: <span class="card-text maxhappiness_level"></span><br />
+              <strong>Max Energy Level</strong>: <span class="card-text maxenergy_level"></span><br />
+              <strong>Hunger Level</strong>: <span class="card-text hunger_level"></span><br />
+              <strong>Sadness Level</strong>: <span class="card-text sadness_level"></span><br />
+              <strong>Laziness Level</strong>: <span class="card-text laziness_level"></span><br />
+
+              <hr>
+              
+              <strong>Parent ID 1: </strong>: <span class="card-text parent1_id"></span><br />
+              <strong>Parent ID 2: </strong>: <span class="card-text parent2_id"></span><br />
+              <strong>Ranking</strong>: <span class="card-text fitness_ranking"></span><br /><br />
+  
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-playWithChild">Play!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+  <br>
+
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-body-secondary">&copy; Virtual Pet Game, FYP 2023</p>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="/account.html" class="nav-link px-2 text-body-secondary">Account</a></li>
+        <li class="nav-item"><a href="/collection.html" class="nav-link px-2 text-body-secondary">Collection</a></li>
+        <li class="nav-item"><a href="/about.html" class="nav-link px-2 text-body-secondary">About</a></li>
+        <li class="nav-item"><a href="/support.html" class="nav-link px-2 text-body-secondary">Help</a></li>
+      </ul>
+    </footer>
+  </div>
+
+
+</body>
+
+</html>

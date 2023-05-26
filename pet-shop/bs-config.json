@@ -1,0 +1,18 @@
+{
+  "server": {
+    "baseDir": ["./src", "./build/contracts"]
+  },
+  "node": {
+    "fs": "empty"
+  },
+  "files": [
+    "index.html",
+    "about.html",
+    "shop.html",
+    "help.html",
+    "collection.html",
+    "account.html",
+    "result.html",
+    "dev/index.html"
+  ]
+}

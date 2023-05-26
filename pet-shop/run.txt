@@ -1,0 +1,11 @@
+truffle compile
+
+---open ganache
+
+truffle migrate
+
+truffle test
+
+---connect metamask with ganache
+
+npm run dev
